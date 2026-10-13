@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Udemy - Học trực tuyến</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #2d2f31;
+    background: #f7f8fa;
+}
+
+header {
+    background: white;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 2px 5px #ddd;
+}
+
+.logo {
+    color: #5624d0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.search {
+    flex: 1;
+    max-width: 500px;
+    padding: 13px;
+    border: 1px solid #777;
+    border-radius: 25px;
+}
+
+button {
+    padding: 11px 18px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login {
+    background: white;
+    border: 1px solid #2d2f31;
+}
+
+.signup, .primary {
+    background: #5624d0;
+    color: white;
+}
+
+nav {
+    background: white;
+    padding: 15px 5%;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #2d2f31;
+    text-decoration: none;
+}
+
+.hero {
+    background: #e9e4f8;
+    padding: 55px 8%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+section {
+    padding: 35px 5%;
+}
+
+section h2 {
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.course {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.course:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px #ddd;
+}
+
+.course img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.course-info {
+    padding: 15px;
+}
+
+.course h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.course p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: #5624d0;
+    font-size: 18px;
+}
+
+.primary {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.database {
+    background: #fff;
+}
+
+.db-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.db-table {
+    border: 1px solid #5624d0;
+    border-radius: 7px;
+    overflow: hidden;
+    background: white;
+}
+
+.db-table h3 {
+    padding: 14px;
+    background: #5624d0;
+    color: white;
+}
+
+.db-table p {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.pk {
+    color: #b45309;
+    font-weight: bold;
+}
+
+.fk {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.relation {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f1edff;
+    border-radius: 7px;
+    line-height: 1.9;
+}
+
+footer {
+    background: #1c1d1f;
+    color: white;
+    padding: 30px 5%;
+    line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+    .courses {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .db-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 550px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    .search {
+        order: 3;
+        max-width: none;
+        width: 100%;
+    }
+
+    .courses, .db-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 35px 6%;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PHẦN 1: GIAO DIỆN TRANG CHỦ -->
+
+<header>
+    <div class="logo">Udemy</div>
+
+    <input class="search" id="search"
+        type="text" placeholder="Tìm kiếm khóa học...">
+
+    <button class="login" onclick="alert('Chức năng đăng nhập')">
+        Đăng nhập
+    </button>
+
+    <button class="signup" onclick="alert('Chức năng đăng ký')">
+        Đăng ký
+    </button>
+</header>
+
+<nav>
+    <a href="#home">Trang chủ</a>
+    <a href="#courses">Khóa học</a>
+    <a href="#database">Thiết kế CSDL</a>
+    <a href="#footer">Liên hệ</a>
+</nav>
+
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>Học kỹ năng mới, mở rộng tương lai</h1>
+        <p>
+            Khám phá hàng nghìn khóa học trực tuyến về công nghệ,
+            kinh doanh, thiết kế và marketing. Học mọi lúc, mọi nơi
+            cùng Udemy.
+        </p>
+        <button class="signup"
+            onclick="document.getElementById('courses').scrollIntoView()">
+            Khám phá khóa học
+        </button>
+    </div>
+</div>
+
+<section id="courses">
+    <h2>Khóa học nổi bật</h2>
+    <p class="subtitle">
+        Lựa chọn khóa học phù hợp với mục tiêu của bạn.
+    </p>
+
+    <div class="courses" id="courseList">
+
+        <div class="course" data-name="Lập trình web HTML CSS">
+            <img src="https://placehold.co/400x200/5624d0/ffffff?text=Web+Development"
+                 alt="Khóa học lập trình web">
+            <div class="course-info">
+                <h3>Lập trình Web HTML & CSS</h3>
+                <p>Giảng viên: Nguyễn Minh Anh</p>
+                <p>★ 4.8 | 1.250 học viên</p>
+                <div class="price">499.000đ</div>
+                <button class="primary"
+                    onclick="registerCourse('Lập trình Web HTML & CSS')">
+                    Đăng ký học
+                </button>
+            </div>
+        </div>
+
+        <div class="course" data-name="Digital Marketing">
+            <img src="https://placehold.co/400x200/087f8c/ffffff?text=Digital+Marketing"
+                 alt="Khóa học marketing">
+            <div class="course-info">
+                <h3>Digital Marketing cơ bản</h3>
+                <p>Giảng viên: Trần Thu Hà</p>
+                <p>★ 4.7 | 980 học viên</p>
+                <div class="price">399.000đ</div>
+                <button class="primary"
+                    onclick="registerCourse('Digital Marketing cơ bản')">
+                    Đăng ký học
+                </button>
+            </div>
+        </div>
+
+        <div class="course" data-name="Excel văn phòng">
+            <img src="https://placehold.co/400x200/16803c/ffffff?text=Microsoft+Excel"
+                 alt="Khóa học Excel">
+            <div class="course-info">
+                <h3>Thành thạo Excel văn phòng</h3>
+                <p>Giảng viên: Lê Hoàng Nam</p>
+                <p>★ 4.9 | 2.100 học viên</p>
+                <div class="price">299.000đ</div>
+                <button class="primary"
+                    onclick="registerCourse('Thành thạo Excel văn phòng')">
+                    Đăng ký học
+                </button>
+            </div>
+        </div>
+
+        <div class="course" data-name="Thiết kế đồ họa">
+            <img src="https://placehold.co/400x200/d97706/ffffff?text=Graphic+Design"
+                 alt="Khóa học thiết kế">
+            <div class="course-info">
+                <h3>Thiết kế đồ họa cơ bản</h3>
+                <p>Giảng viên: Phạm Quỳnh Chi</p>
+                <p>★ 4.6 | 750 học viên</p>
+                <div class="price">459.000đ</div>
+                <button class="primary"
+                    onclick="registerCourse('Thiết kế đồ họa cơ bản')">
+                    Đăng ký học
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PHẦN 2: THIẾT KẾ CƠ SỞ DỮ LIỆU -->
+
+<section class="database" id="database">
+    <h2>Thiết kế cơ sở dữ liệu Udemy</h2>
+    <p class="subtitle">
+        Mô hình cơ sở dữ liệu quản lý nền tảng học trực tuyến.
+        PK là khóa chính, FK là khóa ngoại.
+    </p>
+
+    <div class="db-grid">
+
+        <div class="db-table">
+            <h3>1. USERS - Người dùng</h3>
+            <p><span class="pk">PK</span> user_id: INT</p>
+            <p>full_name: VARCHAR(100)</p>
+            <p>email: VARCHAR(100), UNIQUE</p>
+            <p>password_hash: VARCHAR(255)</p>
+            <p>role: VARCHAR(20)</p>
+            <p>created_at: DATETIME</p>
+        </div>
+
+        <div class="db-table">
+            <h3>2. CATEGORIES - Danh mục</h3>
+            <p><span class="pk">PK</span> category_id: INT</p>
+            <p>category_name: VARCHAR(100)</p>
+            <p>description: TEXT</p>
+        </div>
+
+        <div class="db-table">
+            <h3>3. COURSES - Khóa học</h3>
+            <p><span class="pk">PK</span> course_id: INT</p>
+            <p><span class="fk">FK</span> instructor_id: INT</p>
+            <p><span class="fk">FK</span> category_id: INT</p>
+            <p>course_name: VARCHAR(200)</p>
+            <p>description: TEXT</p>
+            <p>price: DECIMAL(10,2)</p>
+        </div>
+
+        <div class="db-table">
+            <h3>4. ENROLLMENTS - Đăng ký học</h3>
+            <p><span class="pk">PK</span> enrollment_id: INT</p>
+            <p><span class="fk">FK</span> user_id: INT</p>
+            <p><span class="fk">FK</span> course_id: INT</p>
+            <p>enrollment_date: DATETIME</p>
+            <p>progress: DECIMAL(5,2)</p>
+            <p>status: VARCHAR(20)</p>
+        </div>
+
+        <div class="db-table">
+            <h3>5. PAYMENTS - Thanh toán</h3>
+            <p><span class="pk">PK</span> payment_id: INT</p>
+            <p><span class="fk">FK</span> enrollment_id: INT</p>
+            <p>amount: DECIMAL(10,2)</p>
+            <p>payment_method: VARCHAR(50)</p>
+            <p>payment_date: DATETIME</p>
+            <p>status: VARCHAR(20)</p>
+        </div>
+
+        <div class="db-table">
+            <h3>6. REVIEWS - Đánh giá</h3>
+            <p><span class="pk">PK</span> review_id: INT</p>
+            <p><span class="fk">FK</span> user_id: INT</p>
+            <p><span class="fk">FK</span> course_id: INT</p>
+            <p>rating: INT</p>
+            <p>comment: TEXT</p>
+            <p>created_at: DATETIME</p>
+        </div>
+
+    </div>
+
+    <div class="relation">
+        <h3>Mối quan hệ giữa các bảng</h3>
+        <p>• USERS (1) — (N) COURSES: Một giảng viên có thể tạo nhiều khóa học.</p>
+        <p>• CATEGORIES (1) — (N) COURSES: Một danh mục có nhiều khóa học.</p>
+        <p>• USERS (1) — (N) ENROLLMENTS: Một học viên có thể đăng ký nhiều lần học.</p>
+        <p>• COURSES (1) — (N) ENROLLMENTS: Một khóa học có nhiều học viên.</p>
+        <p>• ENROLLMENTS (1) — (N) PAYMENTS: Một lượt đăng ký có thể có nhiều giao dịch thanh toán.</p>
+        <p>• USERS (1) — (N) REVIEWS: Một người dùng có thể viết nhiều đánh giá.</p>
+        <p>• COURSES (1) — (N) REVIEWS: Một khóa học có thể nhận nhiều đánh giá.</p>
+    </div>
+</section>
+
+<footer id="footer">
+    <h2>Udemy - Nền tảng học trực tuyến</h2>
+    <p>Học tập linh hoạt - Phát triển kỹ năng - Nâng cao kiến thức</p>
+    <p>Email: support@udemy.example</p>
+    <p>© 2026 - Bài tập thiết kế hệ thống thương mại điện tử</p>
+</footer>
+
+<script>
+// Tìm kiếm khóa học
+document.getElementById("search").addEventListener("input", function() {
+    const keyword = this.value.toLowerCase();
+    const courses = document.querySelectorAll(".course");
+
+    courses.forEach(function(course) {
+        const name = course.dataset.name.toLowerCase();
+        course.style.display = name.includes(keyword) ? "" : "none";
+    });
+});
+
+// Mô phỏng chức năng đăng ký
+function registerCourse(courseName) {
+    alert("Bạn đã chọn khóa học: " + courseName +
+          "\nVui lòng đăng nhập để tiếp tục đăng ký.");
+}
+</script>
+
+</body>
+</html>
